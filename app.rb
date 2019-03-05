@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require './word.rb'
 
 movies = []
 
@@ -19,6 +20,8 @@ response = Net::HTTP.get(uri)
 parsed_response = JSON.parse(response)
 
 user_input = gets.chomp
+
+Word.new(selected_movie)
 
 case user_input
 when "hint"
