@@ -1,22 +1,19 @@
 class Word
     def initialize(movie)
-        @movie = movie.split("")
-        @input = @input
+        movie.split("")
+        @movie = ["_ " * movie.length] 
     end
 
     def splitWord
-        @movie.each do |char|
-            @chars = char.gsub(char, " _ ")
-            print @chars
-        end
+        puts @movie
     end
 
     def checkLetter(input)
         @movie.each do |x|
             if input == x
-                print "Nice!"
+            
             else
-                print "Boo!"
+
             end
         end
     end
