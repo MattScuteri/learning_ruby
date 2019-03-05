@@ -1,19 +1,22 @@
 class Word
     def initialize(movie)
-        movie.split("")
-        @movie = ["_ " * movie.length] 
+        movie = @movie
+        @movie.split("")
+        @guesses = []
+        @movieArray = ["_ " * movie.length]
     end
 
     def splitWord
-        puts @movie
+        puts @movieArray
     end
 
     def checkLetter(input)
-        @movie.each do |x|
-            if input == x
-            
+        @guesses.push(input)
+        @guesses.each do |x|
+            if @movie.include? x
+                print x
             else
-
+                print '_ '
             end
         end
     end
