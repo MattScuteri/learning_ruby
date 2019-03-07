@@ -19,19 +19,19 @@ uri = URI(url)
 response = Net::HTTP.get(uri)
 parsed_response = JSON.parse(response)
 
-new_word = Word.new(selected_movie)
+new_word = Word.new(selected_movie.upcase)
 new_word.splitWord
+guesses = 10
 
-user_input = gets.chomp.upcase
+while guesses > 0
+    puts guesses
+    user_input = gets.chomp
 
-if user_input == "hint"
-    puts parsed_response["Plot"]
-else
-    new_word.checkLetter(user_input)
-=begin
-when user inputs a letter that matche
-    YAAAAAAAAY
-when user inputs a letter that doesn't
-    BOOOOOOOOO
-=end
+    if user_input == "hint"
+        puts parsed_response["Plot"]
+        guesses -= 1
+    else
+        new_word.checkLetter(user_input.upcase)
+        guesses -= 1
+    end
 end

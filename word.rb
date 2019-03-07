@@ -1,7 +1,7 @@
 class Word
     def initialize(movie)
-        movie = @movie
-        @movie.split("")
+        print movie.upcase.split("")
+        @movie = movie.upcase.split("")
         @guesses = []
         @movieArray = ["_ " * movie.length]
     end
@@ -11,12 +11,11 @@ class Word
     end
 
     def checkLetter(input)
-        @guesses.push(input)
-        @guesses.each do |x|
-            if @movie.include? x
+        @movie.each do |x|
+            if input == x
                 print x
             else
-                print '_ '
+                print "_ "
             end
         end
     end
