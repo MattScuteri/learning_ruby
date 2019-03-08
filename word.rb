@@ -1,11 +1,13 @@
-require './letter.rb'
-
 class Word
     def initialize(movie)
-        # print movie.upcase.split("")
-        @movie = movie.upcase.split("")
+        @movie = movie
+        @split_word = movie.upcase.split('')
+        @movieArray = ''
         @guesses = []
-        @movieArray = ["_ " * movie.length]
+        for i in 0...@split_word.length
+            @movieArray = @movieArray << "_ "
+        end
+        @split_word_length = @split_word.length
     end
 
     def splitWord
@@ -13,14 +15,14 @@ class Word
     end
 
     def checkLetter(input)
-        Letter.new(@movie, input)
-
-        @movie.each do |x|
-            if input == x
-                print x
-            else
-                print "_ "
+        if /#{input}/ =~ @movie
+            for x in 0...@split_word_length
+                if(@split_word[x] == input)
+                    @movieArray[x] = input
+                end
             end
         end
+        # @guesses.push(input.chomp)
+        # print @guesses
     end
 end

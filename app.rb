@@ -9,7 +9,7 @@ File.open('./movies.txt').each do |movie|
 end
 
 selected_movie = movies.sample
-puts selected_movie.upcase
+# puts selected_movie.upcase
 
 puts "Welcome to James Bond Movie Hangman!"
 puts "For a plot clue, type 'hint'"
@@ -19,17 +19,16 @@ uri = URI(url)
 response = Net::HTTP.get(uri)
 parsed_response = JSON.parse(response)
 
-new_word = Word.new(selected_movie.upcase)
-new_word.splitWord
+new_word = Word.new(selected_movie.upcase.chomp)
 guesses = 10
 
 while guesses > 0
+    new_word.splitWord
     puts guesses
     user_input = gets.chomp
 
     if user_input == "hint"
         puts parsed_response["Plot"]
-        guesses -= 1
     else
         new_word.checkLetter(user_input.upcase)
         guesses -= 1
